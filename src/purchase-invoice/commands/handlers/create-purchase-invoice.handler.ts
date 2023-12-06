@@ -13,6 +13,8 @@ export class CreatePurchaseInvoiceHandler
 
   async execute(command: CreatePurchaseInvoiceCommand): Promise<any> {
     console.log(command);
-    throw new Error('Method not implemented.');
+    const { createPurchaseInvoiceDto } = command;
+
+    return this.purchaseInvoiceRepository.create(createPurchaseInvoiceDto);
   }
 }

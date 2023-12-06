@@ -5,8 +5,7 @@ import { PurchaseInvoiceSchema } from './model/purchase-invoice.model';
 import { PurchaseInvoiceController } from './purchase-invoice.controller';
 import { PurchaseInvoiceService } from './purchase-invoice.service';
 import { QueryHandlers } from './queries/handler';
-import { GetPurchaseInvoiceHandler } from './queries/handler/get-purchase-invoice.handler';
-import { PurchaseInvoiceRepository } from './repository/purchase-invoice-repository/purchase-invoice-repository';
+import { RepositoryHandlers } from './repository/purchase-invoice-repository';
 
 @Module({
   imports: [
@@ -17,11 +16,10 @@ import { PurchaseInvoiceRepository } from './repository/purchase-invoice-reposit
   controllers: [PurchaseInvoiceController],
   providers: [
     PurchaseInvoiceService,
-    GetPurchaseInvoiceHandler,
-    PurchaseInvoiceService,
-    PurchaseInvoiceRepository,
     ...CommandHandlers,
     ...QueryHandlers,
+    ...RepositoryHandlers,
   ],
+  // exports: [PurchaseInvoiceService, PurchaseInvoiceModelProvider],
 })
 export class PurchaseInvoiceModule {}

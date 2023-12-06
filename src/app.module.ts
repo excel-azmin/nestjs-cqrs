@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
-import { CqrsModule } from '@nestjs/cqrs';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PurchaseInvoiceModule } from './purchase-invoice/purchase-invoice.module';
+import { CommonDepModule } from './common/module/common-dep.module';
+import { SalesInvoiceModule } from './sales-invoice/sales-invoice.module';
 
 @Module({
   imports: [
-    CqrsModule,
+    CommonDepModule,
     MongooseModule.forRoot(
       'mongodb://root:example@localhost:27011/nestjs_cqrs_db',
       {
         authSource: 'admin',
       },
     ),
-    PurchaseInvoiceModule,
+    SalesInvoiceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
